@@ -7,7 +7,7 @@
 
 	$user = 'root';
 	$db = 'capacitacion';
-	$host = '10.0.40.118';
+	$host = 'localhost';
 	$password = "";
 
 

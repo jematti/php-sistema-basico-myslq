@@ -84,10 +84,18 @@ include('menu.php');
 
             <?php
 				$consulta="SELECT *	 FROM personal WHERE ci='".$v1."' ";
+				$res = mysqli_query($conexion,$consulta);					
+				$fila = mysqli_fetch_array($res);	
+
+				$total = mysqli_num_rows($res);
+				if($total==0){
+					header('Location: index.php');
+				}
+					
 				
-                $res = mysqli_query($conexion,$consulta);
-                $fila = mysqli_fetch_array($res);
-			?>
+
+				
+   		?>
 		
 			<!-- Content -->
 			<div class="container-fluid">
@@ -337,6 +345,8 @@ include('menu.php');
 					</fieldset>
 					<p class="text-center" style="margin-top: 40px;">
 						<button type="submit" class="btn btn-raised btn-success btn-sm" name="insertar" id="Confirmar Registgro"><i class="fas fa-sync-alt"></i> &nbsp; ACTUALIZAR</button>
+						<a href=index.php class="btn btn-raised btn-danger btn-sm" role="button">Cancelar</a>
+
                         
 					</p>
 				</form>
