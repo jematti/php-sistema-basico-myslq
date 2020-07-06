@@ -60,18 +60,24 @@ if (isset($_POST["insertar"]))
 		
 
 
-		$sql="INSERT INTO public.inscritos(
+		$sql="INSERT INTO inscritos(
 			ci, cel, tel_dom, cel_ref, equipos, formacion, condicion_lab, correo_per, correo_umsalud, correo_umsa, funciones_resumen, equipos_laboral, patologia_base, activo, activo_patologia)		
 		 VALUES ('$v1', $cel, $tel_dom, $cel_ref, '$equipos', '$formacion', '$condicion_lab', '$correo_per', '$correo_umsalud', '$correo_umsa', '$funciones_resumen', '$equipos_laboral', '$patologia_base',1 ,'$activo_patologia')";
 		
-		if(mysqli_query($conexion,$sql)){
-			echo "<script>
-			alert('Actualizado correctamente');
-			</script>";	
-				
-		}else{
-			echo "<script> alert('usuario existente o no valido'); 	</script>";	
-		}  
+
+		if (mysqli_query($conexion, $sql)) {
+			echo "New record created successfully";
+	    	} else {
+			echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
+		  }
+		//if(mysqli_query($conexion,$sql)){
+		//	echo "<script>
+		//	alert('Actualizado correctamente');
+		//	</script>";	
+		//		
+		//}else{
+		//	echo "<script> alert('usuario existente o no valido'); 	</script>";	
+		//}  
 }
 ?>
 <!DOCTYPE html>
@@ -83,12 +89,20 @@ include('menu.php');
 ?>
 
             <?php
+				//verifica que haya usuario
 				$consulta="SELECT *	 FROM personal WHERE ci='".$v1."' ";
 				$res = mysqli_query($conexion,$consulta);					
 				$fila = mysqli_fetch_array($res);	
 
 				$total = mysqli_num_rows($res);
-				if($total==0){
+				//verifica que no este inscrito
+				$consulta2="SELECT *	 FROM inscritos WHERE ci='".$v1."' ";
+				$res2 = mysqli_query($conexion,$consulta2);					
+			
+				$total2 = mysqli_num_rows($res2);
+				if($total==0 or $total2>0){
+					echo "<script> alert('usuario no existente o Inscrito'); 	</script>";
+
 					header('Location: index.php');
 				}
 					
@@ -293,20 +307,20 @@ include('menu.php');
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 									    <h5><strong>Correo Personal</strong> </h5>
-										<input type="email" class="form-control" name="correo_per" value="@gmail.com" maxlength="200" required="true">
+										<input type="email" class="form-control" name="correo_per" value="@gmail.com" maxlength="200" >
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 									<h5><strong>Correo Institucional (@umsalud.edu.bo)</strong> </h5>
-										<input type="email" class="form-control" name="correo_umsalud" value="@umsalud.edu.bo"  maxlength="170" required="true">
+										<input type="email" class="form-control" name="correo_umsalud" value="@umsalud.edu.bo"  maxlength="170" >
 									</div>
 								</div>
 
 								<div class="col-12 col-md-12">
 									<div class="form-group">
 									<h5><strong>Correo Institucional (@umsa.bo)</strong> </h5>
-										<input type="email" class="form-control" name="correo_umsa" value="@umsa.bo"  maxlength="170" required="true">
+										<input type="email" class="form-control" name="correo_umsa" value="@umsa.bo"  maxlength="170" >
 									</div>
 								</div>
 								
@@ -361,3 +375,4 @@ include('footer.php');
 	
 </body>
 </html>
+

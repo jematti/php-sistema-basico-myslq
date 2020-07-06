@@ -1,4 +1,4 @@
-CREATE TABLE public.personal
+CREATE TABLE personal
 (
     ci  VARCHAR(50) ,
     nom_ap  VARCHAR(300)  NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE public.personal
 )
 
 
-CREATE TABLE public.inscritos
+CREATE TABLE inscritos
 (
     ci  VARCHAR(50) ,
     cel integer,
@@ -27,7 +27,7 @@ CREATE TABLE public.inscritos
     activo integer,
     activo_patologia  VARCHAR(3) ,
     CONSTRAINT fktest FOREIGN KEY (ci)
-        REFERENCES public.personal (ci) MATCH SIMPLE
+        REFERENCES personal (ci) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 )
