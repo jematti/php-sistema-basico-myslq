@@ -3,6 +3,7 @@
 		<!-- Nav lateral -->
 		<section class="full-box nav-lateral">
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
+			
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
 					<i class="far fa-times-circle show-nav-lateral"></i>
@@ -16,13 +17,13 @@
 					<ul>
 						<li>
 							<a href="index.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; Registrarse </a>
-						</li>
-						
+						</li>			
+					</ul>
 
-						
-					
-
-						
+					<ul>
+						<li>
+							<a href="acceder.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; Acceder </a>
+						</li>			
 					</ul>
 				</nav>
 			</div>
