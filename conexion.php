@@ -18,7 +18,7 @@
 	// establecer y realizar consulta. guardamos en variable.    
     
 	$conexion =mysqli_connect($host,$user,$password,$db) or die ("No se ha podido conectar al servidor de Base de datos");
-
+	$conexion->set_charset("utf8");
 
 	
 	// creación de la conexión a la base de datos con mysql_connect()

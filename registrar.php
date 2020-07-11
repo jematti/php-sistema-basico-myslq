@@ -74,7 +74,6 @@ if (isset($_POST["insertar"]))
 			echo "<script>
 			alert('Actualizado correctamente');
 			</script>";	
-				
 		}else{
 			echo "<script> alert('Usuario no existente o Ya inscrito!!!'); 	</script>";	
 		}  
@@ -96,14 +95,17 @@ include('menu.php');
 
 				$total = mysqli_num_rows($res);
 				//verifica que no este inscrito
-				$consulta2="SELECT *	 FROM inscritos WHERE ci='".$v1."' ";
+				$consulta2="SELECT * FROM inscritos WHERE ci='".$v1."' ";
 				$res2 = mysqli_query($conexion,$consulta2);					
 			
 				$total2 = mysqli_num_rows($res2);
-				if($total==0 or $total2>0){
-					echo "<script> alert('usuario no existente o Inscrito'); 	</script>";
+				if($total==0){
 
-					header('Location: index.php');
+					header('Location: error.php');
+				}else{
+					if ($total2>0) {
+						header('Location: alerta.php');		
+					}
 				}
 					
 				
@@ -160,7 +162,7 @@ include('menu.php');
 							    <div class="col-12 col-md-12">
 									<div class="form-group">
 									<h5> <strong>Telefono Celular :</strong> </h5>
-										<input type="text" class="form-control" name="cel" id="cel"  maxlength="20" required="true">
+										<input type="number" class="form-control" name="cel" id="cel"  maxlength="20" required="true">
 									</div>
 								</div>
 								
