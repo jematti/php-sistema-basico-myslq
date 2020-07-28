@@ -43,8 +43,8 @@ class PDF extends fpdf
     $pdf->SetFont('Times','B',13);
     $pdf->Cell(5,10,"N",1,0,'C',1);
   	$pdf->Cell(20,10,"Ci",1,0,'C',1);
-    $pdf->Cell(60,10,"Nombre",1,0,'C',1);
-    $pdf->Cell(25,10,"Cargo",1,0,'C',1);
+    $pdf->Cell(70,10,"Nombre",1,0,'C',1);
+    $pdf->Cell(55,10,"Cargo",1,0,'C',1);
     //$pdf->Cell(65,10,"Unidad",1,0,'C',1);
     $pdf->Cell(18,10,"Celular",1,0,'C',1);
     $pdf->Cell(55,10,"Correo",1,1,'C',1);
@@ -60,8 +60,8 @@ class PDF extends fpdf
     		$i++;
 			$pdf->Cell(5,8,$i,1,0,'C');
 		    $pdf->Cell(20,8,utf8_decode($fila[0]),1,0,'C');
-		    $pdf->Cell(60,8,utf8_decode($fila[1]),1,0,'C');
-            $pdf->Cell(25,8,$fila[2],1,0,'C');
+		    $pdf->Cell(70,8,utf8_decode($fila[1]),1,0,'C');
+            $pdf->Cell(55,8,$fila[2],1,0,'C');
             //$pdf->Cell(65,8,$fila[3],1,0,'C');
             $pdf->Cell(18,8,$fila[4],1,0,'C');
 			$pdf->Cell(55,8,$fila[5],1,0,'C');

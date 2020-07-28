@@ -100,7 +100,6 @@ include('menu.php');
 			
 				$total2 = mysqli_num_rows($res2);
 				if($total==0){
-
 					header('Location: error.php');
 				}else{
 					if ($total2>0) {
